@@ -1,6 +1,10 @@
 {
     "name": "mazurik-todo-list",
     "version": "0.1",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/alexeymazurik/todo-list.git"
+    },
     "scripts": {
         "start": "node server.js"
     },
