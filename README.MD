@@ -9,7 +9,14 @@ You have to have **node.js**, **npm**, **mysql** installed to deploy this projec
 
 `cp config/config.js.example config/config.js`
 
-Fix file config.js if you have a problems
+Create new db, change db-name, db-user and db-password
+
+Fix file config.js or model/db_connect.js if you have a problems
+Then load config/db.sql dump to your database
+
+To start project type
+
+`nodejs server.js`
 
 ## Deployed project
 Deployed project you can find here
