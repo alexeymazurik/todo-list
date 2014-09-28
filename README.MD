@@ -6,6 +6,7 @@ You have to have **node.js**, **npm**, **mysql** installed to deploy this projec
 
 ## How to deploy
 `npm install`
+
 `cp config/config.js.example config/config.js`
 Fix file config.js if you have a problems
 
