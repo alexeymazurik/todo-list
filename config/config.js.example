@@ -1,0 +1,13 @@
+/*
+* This is config file for MySQL
+* You need to input your credentials to deploy application
+* */
+exports.config = {
+    database: {
+        host: 'localhost',
+        port: 8889,
+        login: 'root',
+        password: 'root',
+        name: 'todoapp'
+    }
+}

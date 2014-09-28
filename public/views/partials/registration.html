@@ -1,0 +1,34 @@
+<div id="signUpForm" class="row loginForm">
+    <div class="col-md-offset-4 col-md-4">
+        <div class="panel panel-primary">
+
+            <div class="panel-heading"><h3><span class="glyphicon glyphicon-certificate"></span> Sign Up</h3></div>
+
+            <div class="panel-body">
+
+                <div class="alert alert-danger" role="alert">User with this username already exists.</div>
+
+                <form class="form-horizontal" ng-controller="signUpCtrl" ng-submit="signUp()">
+                    <div class="form-group">
+                        <label for="login" class="control-label col-md-2">Username: </label>
+                        <div class="col-md-10">
+                            <input id='login' type="text" class="form-control" ng-model="username" required="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="control-label col-md-2">Password: </label>
+                        <div class="col-md-10">
+                            <input id="password" type="password" class="form-control" ng-model="password" required="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="text-center">
+                            <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,177 @@
+<div id="toDoForm" ng-controller="mainCtrl">
+
+    <div class="col-md-offset-3 col-md-6">
+        <ul class="list-unstyled">
+            <li ng-repeat="result in results">
+                <div>
+                    <div class="panel panel-default">
+
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <h4><span class="glyphicon glyphicon-calendar"></span> {{result.project_name}}</h4>
+                                </div>
+                                <div class="col-md-2 text-right">
+                                    <button type="button" class="specialButton" ng-click="editProject(result.project_id)">
+                                        <h4><span class="glyphicon glyphicon-edit"></span></h4>
+                                    </button>
+                                    |
+                                    <button type="button" class="specialButton" ng-click="deleteProject(result.project_id)">
+                                        <h4><span class="glyphicon glyphicon-trash"></span></h4>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<div class="panel-body">-->
+
+                            <div class="addForm">
+
+                                <form ng-submit="addTask(result.project_id, result.temporaryTask, result.temporaryDate)">
+
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                    <input type="text" placeholder="Type task name here..." class="form-control" ng-model="result.temporaryTask" required="" maxlength="220">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            Remind me:
+                                            <select class="select" ng-model="result.temporaryDate">
+                                                <option value="today">Today</option>
+                                                <option value="tomorrow">Tomorrow</option>
+                                                <option value="week">In a week</option>
+                                                <option value="month">In a month</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="submit" class="form-control btn btn-default">Add task</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            <h5>Status</h5>
+                                        </td>
+                                        <td>
+                                            <h5>Task name</h5>
+                                        </td>
+                                        <td>
+                                            <h5>Deadline</h5>
+                                        </td>
+                                        <td>
+                                            <h5>Options</h5>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="task in result.tasks" ng-class="{ success: task.task_status }">
+                                        <td class="checkArea">
+                                            <input type="checkbox" ng-model="task.task_status" ng-change="editStatus(task.task_id, result.project_id)">
+                                        </td>
+                                        <td>
+                                            <p class="long_string">
+                                                <p ng-class='{ deleted: task.task_status }'>
+                                                    {{task.task_name}}
+                                                </p>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            {{task.task_deadline | date: dd/yy/mm}}
+                                        </td>
+                                        <td>
+                                            <button type="button" class="specialButton" ng-click="editTask(result.project_id, task.task_id)">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </button>
+
+                                            <button type="button" class="specialButton" ng-click="deleteTask(task.task_id, result.project_id)">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        <!--</div>-->
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+
+        <!--<div collapse="isCollapsed">-->
+            <!--<div class="well well-lg">-->
+                <!--<form class="form-inline" ng-submit="addProject()">-->
+                    <!--<div class="form-group">-->
+                        <!--<input type="text" class="form-control" placeholder="Type project name here..." ng-model="projectToAdd" required="">-->
+                        <!--<button type="submit" class="form-control btn btn-default">-->
+                            <!--Done-->
+                        <!--</button>-->
+                    <!--</div>-->
+                <!--</form>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="text-center">-->
+            <!--<button class="btn btn-default" type="button" ng-click="isCollapsed = !isCollapsed"><span class="glyphicon glyphicon-plus"></span> Add ToDo List</button>-->
+        <!--</div>-->
+
+
+        <!-- Button trigger modal -->
+        <div class="text-center">
+            <button class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">
+                <span class="glyphicon glyphicon-plus"> Add TODO List</span>
+            </button>
+        </div>
+
+        <br>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Add ToDo List</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" id="#editForm" style="padding: 10px" ng-submit="addProject()">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Type TODO name here..." ng-model="projectToAdd">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" form="#editForm">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-default text-right">
+            <div class="panel-heading">
+                <h4>Hi, <span>
+                    {{user_name}}
+                </span></h4>
+            </div>
+            <div class="panel-body">
+                <button class="btn btn-default" ng-click="signOut()">Sign Out</button>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="col-md-3 text-right">-->
+        <!--<div class="panel" style="padding:10px">-->
+            <!--<h5>Hi, User!  </h5><button class="btn btn-default">Sign Out</button>-->
+        <!--</div>-->
+    <!--</div>-->
+
+</div>

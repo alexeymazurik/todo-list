@@ -1,0 +1,66 @@
+body {
+    background: url('../img/random_grey_variations.png') repeat;
+    padding: 20px;
+}
+
+.addForm {
+    padding: 10px;
+    width: 100%;
+    background: #ececec;
+}
+
+.deleted {
+    text-decoration: line-through;
+}
+
+.long_string {
+    width: 400px;
+}
+
+#loginForm {
+    margin-top: 20px;
+}
+
+.addForm .input-group {
+    width: 100%;
+}
+
+#toDoForm {
+    margin-top: 40px;
+}
+
+.task {
+
+}
+
+.loginForm .panel {
+    box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+}
+
+.checkArea {
+    text-align: center;
+}
+
+.deadlineArea {
+
+}
+
+.textArea {
+
+}
+
+.specialButton {
+    line-height: 20px;
+    vertical-align: middle;
+    border: none;
+    background: none;
+}
+
+.specialButton:hover {
+    background: lightgray;
+}
+
+.specialButton:active {
+    background: darkgray;
+    outline: none;
+}
